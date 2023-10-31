@@ -1,7 +1,19 @@
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import LoginPage from './pages/login';
+import RegisterPage from './pages/register';
 
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <>
+      {/* <Navbar/> */}
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+      {/* <Footer/> */}
+    </>
+  );
 }
 
 export default App;

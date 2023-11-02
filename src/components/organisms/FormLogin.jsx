@@ -35,7 +35,9 @@ const FormLogin = () => {
       </InputForm>
 
       {loginFailed && <p className="text-red-600 text-center mt-5">{loginFailed}</p>}
-      <Button type={'submit'}>Login</Button>
+      <Button type={'submit'} className="w-full">
+        Login
+      </Button>
     </form>
   );
 };

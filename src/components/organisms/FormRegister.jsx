@@ -41,7 +41,9 @@ const FormRegister = () => {
         Password
       </InputForm>
 
-      <Button type={'submit'}>Register</Button>
+      <Button type={'submit'} className="w-full">
+        Register
+      </Button>
     </form>
   );
 };

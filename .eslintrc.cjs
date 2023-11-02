@@ -19,5 +19,6 @@ module.exports = {
         varsIgnorePattern: 'React',
       },
     ],
+    'react-hooks/exhaustive-deps': 'off',
   },
 };

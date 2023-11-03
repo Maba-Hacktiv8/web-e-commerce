@@ -23,12 +23,15 @@ const Header = ({ image, id }) => {
   );
 };
 
-const Body = ({ category, name, id }) => {
+const Body = ({ category, name, id, description }) => {
   return (
     <div className="px-5 h-full">
       <Link to={`/product/${id}`}>
-        <h5 className="text-xl font-semibold tracking-tight ">{name}</h5>
-        <p className="text-slate-400 font-normal">{category}</p>
+        <h5 className="text-xl font-semibold tracking-tight mt-3">{name}</h5>
+        <p className="inline-block my-2 bg-black rounded-md px-2 py-1 shadow-md text-xs text-white">
+          {category}
+        </p>
+        <p>{description.substring(0, 100)}...</p>
       </Link>
     </div>
   );
@@ -36,11 +39,9 @@ const Body = ({ category, name, id }) => {
 
 const Footer = ({ price }) => {
   return (
-    <div className="flex items-center  justify-between px-5 pb-5 ">
-      <span className="text-xl font-black">$ {price.toLocaleString()}</span>
-      <Button type="button" classname="mt-0">
-        Add To Cart
-      </Button>
+    <div className="flex items-center justify-between px-5 pb-5 ">
+      <span className="text-xl font-black  mt-6">$ {price.toLocaleString()}</span>
+      <Button type="button">Add To Cart</Button>
     </div>
   );
 };
@@ -58,6 +59,7 @@ Body.propTypes = {
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 Footer.propTypes = {

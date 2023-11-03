@@ -8,7 +8,7 @@ import DetailProductPage from './pages/detailProduct';
 function App() {
   return (
     <>
-      {/* <Navbar/> */}
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />

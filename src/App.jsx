@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/templates/Navbar';
+import Footer from './components/templates/Footer';
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
 import ProductsPage from './pages/products';
@@ -8,7 +10,7 @@ import DetailProductPage from './pages/detailProduct';
 function App() {
   return (
     <>
-      {/* <Navbar/> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -17,7 +19,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/product/:id" element={<DetailProductPage />} />
       </Routes>
-      {/* <Footer/> */}
+      <Footer />
     </>
   );
 }

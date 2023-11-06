@@ -1,13 +1,15 @@
-import React from 'react';
-import { useLogin } from '../hooks/useLogin';
-import CardProduct from '../components/organisms/CardProduct';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from './../services/product.service';
-import { setProducts } from '../redux/actions/productActions';
+import React from "react";
+import { useLogin } from "../hooks/useLogin";
+import CardProduct from "../components/organisms/CardProduct";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "./../services/product.service";
+import { setProducts } from "../redux/actions/productActions";
+import { Link } from "react-router-dom";
+import IconCart from "../components/moleculs/IconCart";
 
 const ProductsPage = () => {
   const username = useLogin();
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState("");
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
 
@@ -23,8 +25,8 @@ const ProductsPage = () => {
 
   return (
     <>
-      Username: {username}
-      <input
+      {/* Username: {username} */}
+      {/* <input
         type="text"
         placeholder="Enter product name"
         className="ml-5 mt-5 px-5 py-2 rounded border-2 border-gray-600"
@@ -32,7 +34,7 @@ const ProductsPage = () => {
         onChange={(e) => {
           setSearchValue(e.target.value);
         }}
-      />
+      /> */}
       <div className="flex justify-center py-5">
         <div className="w-full flex flex-wrap justify-evenly">
           {productsFiltered.length > 0 &&
@@ -50,6 +52,9 @@ const ProductsPage = () => {
             ))}
         </div>
       </div>
+      <Link to={"/cart"}>
+        <IconCart />
+      </Link>
     </>
   );
 };

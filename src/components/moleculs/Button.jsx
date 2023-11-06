@@ -1,11 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const Button = ({ children, type = 'button', classname }) => {
+const Button = ({
+  children,
+  type = "button",
+  classname,
+  onClick = () => {},
+}) => {
   return (
     <button
       type={type}
-      className={`block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 ${classname}`}
+      className={`block text-white font-semibold rounded-lg px-4 py-3 mt-6 ${classname}`}
+      onClick={onClick}
     >
       {children}
     </button>

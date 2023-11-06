@@ -1,11 +1,12 @@
-import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/templates/Navbar';
-import Footer from './components/templates/Footer';
-import LoginPage from './pages/login';
-import RegisterPage from './pages/register';
-import ProductsPage from './pages/products';
-import ProfilePage from './pages/profile';
-import DetailProductPage from './pages/detailProduct';
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/templates/Navbar";
+import Footer from "./components/templates/Footer";
+import LoginPage from "./pages/login";
+import RegisterPage from "./pages/register";
+import ProductsPage from "./pages/products";
+import ProfilePage from "./pages/profile";
+import DetailProductPage from "./pages/detailProduct";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/product/:id" element={<DetailProductPage />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </>

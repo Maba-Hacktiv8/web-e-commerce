@@ -3,13 +3,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../moleculs/Search";
 import { FaMagnifyingGlass, FaX } from "react-icons/fa6";
+import { useLogin } from "../../hooks/useLogin";
 
 const Navbar = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const handleOpen = () => {
-  //   setIsOpen(!isOpen);
-  // };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+  const username = useLogin();
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto  ">
@@ -35,10 +36,17 @@ const Navbar = () => {
               <span className="ml-3 text-lg md:text-xl">Tailblocks</span>
             </a>
           </Link>
-          {/* <div className="hidden lg:block">
-            <Search />
-          </div> */}
-          <button>Login</button>
+          {localStorage.getItem("token") ? (
+            <p className="font-semibold">Hallo {username} 👋, Happy Shipping</p>
+          ) : (
+            ""
+          )}
+          <button
+            className="border border-black p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold"
+            onClick={handleLogout}
+          >
+            {localStorage.getItem("token") ? "Logout" : "Login"}
+          </button>
         </div>
         <div className="w-full">
           <Search />

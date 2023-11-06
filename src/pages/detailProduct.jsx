@@ -1,9 +1,9 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { getDetailProduct } from '../services/product.service';
-import { AiFillStar } from 'react-icons/ai';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectedProduct } from '../redux/actions/productActions';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { getDetailProduct } from "../services/product.service";
+import { AiFillStar } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { selectedProduct } from "../redux/actions/productActions";
 
 const DetailProductPage = () => {
   const product = useSelector((state) => state.product);
@@ -30,8 +30,12 @@ const DetailProductPage = () => {
           </div>
           <form className="flex-auto p-6">
             <div className="flex flex-wrap flex-col">
-              <h1 className="flex-auto text-lg font-semibold text-slate-900">{product.title}</h1>
-              <div className="text-lg font-semibold text-slate-500">${product.price}</div>
+              <h1 className="flex-auto text-lg font-semibold text-slate-900">
+                {product.title}
+              </h1>
+              <div className="text-lg font-semibold text-slate-500">
+                ${product.price}
+              </div>
             </div>
             <div className="text-base font-semibold text-slate-700 flex items-center gap-2">
               <AiFillStar className="text-yellow-500 text-lg" />
@@ -40,7 +44,9 @@ const DetailProductPage = () => {
               </p>
             </div>
             <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
-              <div className="space-x-2 flex text-sm">{product.description}</div>
+              <div className="space-x-2 flex text-sm">
+                {product.description}
+              </div>
             </div>
             <div className="flex space-x-4 mb-6 text-sm font-medium">
               <div className="flex-auto flex space-x-4">
@@ -62,7 +68,12 @@ const DetailProductPage = () => {
                 type="button"
                 aria-label="Like"
               >
-                <svg width="20" height="20" fill="currentColor" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -71,7 +82,9 @@ const DetailProductPage = () => {
                 </svg>
               </button>
             </div>
-            <p className="text-sm text-slate-700">Free shipping on all east JAVA orders.</p>
+            <p className="text-sm text-slate-700">
+              Free shipping on all east JAVA orders.
+            </p>
           </form>
         </div>
       )}

@@ -10,7 +10,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`block text-white font-semibold rounded-lg px-4 py-3 mt-6 ${classname}`}
+      className={`block text-indigo-500 border border-indigo-500 font-semibold rounded-lg px-4 py-3  ${classname}`}
       onClick={onClick}
     >
       {children}

@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import IconCart from "../components/moleculs/IconCart";
 
 const ProductsPage = () => {
-  const username = useLogin();
   const [searchValue, setSearchValue] = React.useState("");
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
@@ -25,7 +24,6 @@ const ProductsPage = () => {
 
   return (
     <>
-      {/* Username: {username} */}
       {/* <input
         type="text"
         placeholder="Enter product name"

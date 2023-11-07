@@ -8,6 +8,7 @@ import { useLogin } from "../../hooks/useLogin";
 const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("cart");
     window.location.href = "/login";
   };
   const username = useLogin();
@@ -42,7 +43,7 @@ const Navbar = () => {
             ""
           )}
           <button
-            className="border border-black p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold"
+            className="border text-white border-black bg-black p-2 rounded-lg hover:text-black hover:bg-white transition-all duration-300 font-semibold"
             onClick={handleLogout}
           >
             {localStorage.getItem("token") ? "Logout" : "Login"}

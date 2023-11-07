@@ -104,11 +104,11 @@ const Cart = () => {
                 <h1 className="font-bold text-xl">
                   Wah, Keranjang belanjaanmu masih kosong
                 </h1>
-                <button className="flex w-80 bg-white hover:bg-black p-2 rounded-full justify-center ml-5 text-black hover:text-white mt-5 transition-all duration-300 border border-black">
-                  <a href="/products" className="font-semibold">
-                    Yuk isi dulu!
-                  </a>
-                </button>
+                <a href="/products">
+                  <button className="flex w-80 bg-white hover:bg-black p-2 rounded-full justify-center ml-5 text-black hover:text-white mt-5 transition-all duration-300 border border-black">
+                    <p className="font-semibold">Yuk isi dulu!</p>
+                  </button>
+                </a>
               </div>
             </div>
           ) : null}

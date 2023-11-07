@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const AuthLayout = ({ children, type }) => {
   return (
-    <section className=" bg-gray-200 min-h-screen flex items-center justify-center">
+    <section className=" bg-gray-200 h-screen flex items-center justify-center">
       <div className="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl">
         <div className="md:w-1/2 px-5">
           <h2 className="text-2xl font-bold text-[#002D74]">

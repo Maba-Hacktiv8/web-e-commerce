@@ -1,15 +1,16 @@
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Search from "../moleculs/Search";
-import { FaMagnifyingGlass, FaX } from "react-icons/fa6";
-import { useLogin } from "../../hooks/useLogin";
+import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Search from '../moleculs/Search';
+import { FaMagnifyingGlass, FaX } from 'react-icons/fa6';
+import { useLogin } from '../../hooks/useLogin';
+import LOGO from '../../assets/logo.png';
 
 const Navbar = () => {
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("cart");
-    window.location.href = "/login";
+    localStorage.removeItem('token');
+    localStorage.removeItem('cart');
+    window.location.href = '/login';
   };
   const username = useLogin();
   return (
@@ -20,38 +21,27 @@ const Navbar = () => {
             {isOpen ? <Search /> : <FaMagnifyingGlass />}
           </div> */}
 
-          <Link to={"/products"}>
+          <Link to={'/products'}>
             <a className="flex title-font font-medium items-center text-gray-900 ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                className="w-8 text-white p-2 bg-indigo-500 rounded-full"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-              <span className="ml-3 text-lg md:text-xl">Tailblocks</span>
+              <img src={LOGO} alt="LOGO" className="h-14" />
+              <span className="ml-3 text-lg md:text-xl">HackShop</span>
             </a>
           </Link>
-          {localStorage.getItem("token") ? (
+          {localStorage.getItem('token') ? (
             <p className="font-semibold">Hallo {username} 👋, Happy Shipping</p>
           ) : (
-            ""
+            ''
           )}
           <button
             className="border text-white border-black bg-black p-2 rounded-lg hover:text-black hover:bg-white transition-all duration-300 font-semibold"
             onClick={handleLogout}
           >
-            {localStorage.getItem("token") ? "Logout" : "Login"}
+            {localStorage.getItem('token') ? 'Logout' : 'Login'}
           </button>
         </div>
-        <div className="w-full">
+        {/* <div className="w-full">
           <Search />
-        </div>
+        </div> */}
       </div>
     </header>
   );

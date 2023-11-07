@@ -1,16 +1,16 @@
-import React from 'react';
-import { getUsername } from '../services/auth.service';
+import React from "react";
+import { getUsername } from "../services/auth.service";
 
 export const useLogin = () => {
-  const [username, setUsername] = React.useState('');
+  const [username, setUsername] = React.useState("");
 
   React.useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     if (token) {
       setUsername(getUsername(token));
     } else {
-      window.location.href = '/login';
+      // window.location.href = "/products";
     }
   }, []);
 

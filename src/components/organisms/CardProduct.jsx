@@ -42,16 +42,21 @@ const Body = ({ category, name, id, description }) => {
 const Footer = ({ price, id }) => {
   const dispatch = useDispatch();
   const handleAddToCart = () => {
-    dispatch(addToCart({ id, qty: 1 }));
+    const isLogin = localStorage.getItem("token");
+    if (isLogin) {
+      dispatch(addToCart({ id, qty: 1 }));
+    } else {
+      window.location.href = "/login";
+    }
   };
   return (
-    <div className="flex items-center justify-between px-5 pb-5 ">
+    <div className="flex items-center justify-between px-5 py-5 ">
       <span className="text-xl font-black  mt-6">
         $ {price.toLocaleString()}
       </span>
 
       <Button
-        classname="text-white bg-slate-950 hover:text-slate-950 hover:bg-white border border-slate-950 transition-all duration-300"
+        classname="text-slate-950 bg-white hover:text-white hover:bg-slate-950 border border-slate-950 transition-all duration-300"
         onClick={handleAddToCart}
       >
         Add To Cart

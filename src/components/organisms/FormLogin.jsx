@@ -2,6 +2,7 @@ import React from "react";
 import InputForm from "../moleculs/InputForm";
 import Button from "../moleculs/Button";
 import { login } from "../../services/auth.service";
+import { useEffect } from "react";
 
 const FormLogin = () => {
   const [loginFailed, setLoginFailed] = React.useState(false);
@@ -23,11 +24,16 @@ const FormLogin = () => {
       }
     });
   };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      window.location.href = "/products";
+    }
+  }, []);
 
   return (
     <form className="mt-6" onSubmit={handleLogin}>
       <InputForm
-        placeholder="johnd"
+        placeholder="username"
         type="text"
         htmlFor="username"
         name="username"

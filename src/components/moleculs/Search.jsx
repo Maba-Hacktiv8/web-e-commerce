@@ -13,7 +13,7 @@ const Search = () => {
 
   // navigate to the search page with the input value
   const handleSearch = () => {
-    navigate(`/search/${input}`);
+    navigate(`/products/${input}`);
     setInput("");
   };
   return (
@@ -28,9 +28,9 @@ const Search = () => {
             handleSearch();
           }
         }}
-        className="w-[435px] md:w-[720px] lg:w-[1235px] rounded-md px-2 mx-5 md:py-1 pe-2 shadow-sm sm:text-sm border border-slate-300"
+        className="w-full rounded-md px-2 py-2.5 pe-10 shadow-sm sm:text-sm"
       />
-      <span className="absolute inset-y-1  end-6 grid w-10 place-content-center">
+      <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
         <button
           type="button"
           className="text-gray-600 hover:text-gray-700"

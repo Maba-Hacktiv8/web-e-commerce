@@ -1,20 +1,37 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getDetailProduct } from "../services/product.service";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProduct } from "../redux/actions/productActions";
+import IconCart from "../components/moleculs/IconCart";
+import { addToCart } from "../redux/slices/cartSlice";
+import { useState } from "react";
 
 const DetailProductPage = () => {
   const product = useSelector((state) => state.product);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [isLike, setIsLike] = useState(false);
 
   React.useEffect(() => {
     getDetailProduct(id, (data) => {
       dispatch(selectedProduct(data));
     });
   }, [id]);
+
+  const handleLike = () => {
+    setIsLike(!isLike);
+  };
+
+  const handleAddToCart = () => {
+    const isLogin = localStorage.getItem("token");
+    if (isLogin) {
+      dispatch(addToCart({ id: Number(id), qty: 1 }));
+    } else {
+      window.location.href = "/login";
+    }
+  };
 
   return (
     <div className="w-100 min-h-screen flex justify-center items-center bg-gray-100">
@@ -51,22 +68,29 @@ const DetailProductPage = () => {
             <div className="flex space-x-4 mb-6 text-sm font-medium">
               <div className="flex-auto flex space-x-4">
                 <button
-                  className="h-10 px-6 font-semibold rounded-md bg-black text-white"
+                  className="h-10 px-6 font-semibold rounded-md border border-slate-950 text-slate-950 hover:text-white hover:bg-slate-950 transition-all duration-300"
                   type="submit"
                 >
                   Buy now
                 </button>
                 <button
-                  className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900"
+                  className="h-10 px-6 font-semibold rounded-md border border-slate-950 text-slate-950 hover:text-white hover:bg-slate-950 transition-all duration-300"
                   type="button"
+                  onClick={handleAddToCart}
                 >
                   Add to cart
                 </button>
               </div>
+
               <button
-                className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
+                className={
+                  isLike
+                    ? "flex-none flex items-center justify-center w-9 h-9 rounded-md text-red-500 border border-red-500"
+                    : "flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
+                }
                 type="button"
                 aria-label="Like"
+                onClick={handleLike}
               >
                 <svg
                   width="20"
@@ -88,6 +112,9 @@ const DetailProductPage = () => {
           </form>
         </div>
       )}
+      <Link to={"/cart"}>
+        <IconCart />
+      </Link>
     </div>
   );
 };

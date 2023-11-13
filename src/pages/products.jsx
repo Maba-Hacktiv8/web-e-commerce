@@ -44,6 +44,7 @@ const ProductsPage = () => {
                   category={product.category}
                   id={product.id}
                   description={product.description}
+                  count={product.rating.count}
                 />
                 <CardProduct.Footer price={product.price} id={product.id} />
               </CardProduct>

@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export const login = (data, callback) => {
   axios
-    .post('https://fakestoreapi.com/auth/login', data)
+    .post("https://fakestoreapi.com/auth/login", data)
     .then((res) => {
       callback(true, res.data.token);
     })
@@ -25,24 +25,24 @@ export const register = (data, callback) => {
     username,
     password,
     name: {
-      firstname: fullname.split(' ')[0],
-      lastname: fullname.split(' ')[1],
+      firstname: fullname.split(" ")[0],
+      lastname: fullname.split(" ")[1],
     },
     address: {
-      city: 'kilcoole',
-      street: '7835 new road',
+      city: "kilcoole",
+      street: "7835 new road",
       number: 3,
-      zipcode: '12926-3874',
+      zipcode: "12926-3874",
       geolocation: {
-        lat: '-37.3159',
-        long: '81.1496',
+        lat: "-37.3159",
+        long: "81.1496",
       },
     },
-    phone: '1-570-236-7033',
+    phone: "1-570-236-7033",
   };
 
   axios
-    .post('https://fakestoreapi.com/users', userData)
+    .post("https://fakestoreapi.com/users", userData)
     .then((res) => {
       callback(true, res);
     })

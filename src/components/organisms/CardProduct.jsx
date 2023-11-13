@@ -25,14 +25,17 @@ const Header = ({ image, id }) => {
   );
 };
 
-const Body = ({ category, name, id, description }) => {
+const Body = ({ category, name, id, description, count }) => {
   return (
     <div className="px-5 h-full">
       <Link to={`/product/${id}`}>
         <h5 className="text-xl font-semibold tracking-tight mt-3">{name}</h5>
-        <p className="inline-block my-2 bg-black rounded-md px-2 py-1 shadow-md text-xs text-white">
-          {category}
-        </p>
+        <div className="flex justify-between items-center my-3">
+          <p className="inline-block my-2 bg-black rounded-md px-2 py-1 shadow-md text-xs text-white">
+            {category}
+          </p>
+          <p>Our Stock: {count}</p>
+        </div>
         <p>{description.substring(0, 100)}...</p>
       </Link>
     </div>
@@ -79,6 +82,7 @@ Body.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 Footer.propTypes = {

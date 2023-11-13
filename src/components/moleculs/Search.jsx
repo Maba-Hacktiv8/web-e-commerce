@@ -13,11 +13,11 @@ const Search = () => {
 
   // navigate to the search page with the input value
   const handleSearch = () => {
-    navigate(`/products/${input}`);
+    navigate(`/products/category/${input}`);
     setInput("");
   };
   return (
-    <div className="relative">
+    <div className="relative border border-slate-400 rounded-md mx-4 mb-5">
       <input
         type="text"
         placeholder="Search For..."

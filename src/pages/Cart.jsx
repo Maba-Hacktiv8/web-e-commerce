@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, decreaseCart, removeCart } from "../redux/slices/cartSlice";
+import {
+  addToCart,
+  clearCart,
+  decreaseCart,
+  removeCart,
+} from "../redux/slices/cartSlice";
+import { addToOrder } from "../redux/slices/orderSlice";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -16,8 +22,17 @@ const Cart = () => {
       }, 0);
       setTotalPrice(sum);
       localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+      setTotalPrice(0);
     }
+    console.log(products);
   }, [cart, products]);
+
+  const handleOrder = () => {
+    const orderItems = cart.map((item) => ({ id: item.id, qty: item.qty }));
+    dispatch(addToOrder(orderItems));
+    dispatch(clearCart());
+  };
   return (
     <div className="min-h-screen bg-gray-100 py-20">
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
@@ -50,11 +65,11 @@ const Cart = () => {
                       <h1 className="flex-auto text-lg font-semibold text-slate-900">
                         {product.title}
                       </h1>
-                      <div className="text-lg font-semibold text-slate-500">
+                      <div className="text-lg pt-3 font-semibold text-red-600">
                         $ {product.price}
                       </div>
                     </div>
-                    <div className="text-base font-semibold text-slate-700 flex items-center gap-2">
+                    <div className="text-base font-semibold text-slate-400 flex items-center gap-2">
                       <p className="mt-10">
                         Rating {product.rating.rate}/5 ({product.rating.count})
                       </p>
@@ -119,17 +134,15 @@ const Cart = () => {
               <p className="text-lg font-bold">Total price</p>
               <div className="">
                 <p className="mb-1 text-lg font-bold">
-                  $
-                  {totalPrice.toLocaleString("en-US", {
-                    styles: "currency",
-                    currency: "USD",
-                  })}{" "}
-                  USD
+                  $ {totalPrice.toLocaleString()}
                 </p>
               </div>
             </div>
             <hr className="my-2" />
-            <button className="mt-6 w-full rounded-md bg-black py-1.5 font-medium text-white hover:bg-white hover:text-black transition-all duration-300 border border-black">
+            <button
+              className="mt-6 w-full rounded-md bg-black py-1.5 font-medium text-white hover:bg-white hover:text-black transition-all duration-300 border border-black"
+              onClick={handleOrder}
+            >
               Check out
             </button>
           </div>

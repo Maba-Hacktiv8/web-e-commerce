@@ -7,6 +7,8 @@ import ProductsPage from "./pages/products";
 import ProfilePage from "./pages/profile";
 import DetailProductPage from "./pages/detailProduct";
 import Cart from "./pages/Cart";
+import Stock from "./pages/Stock";
+import Report from "./pages/report";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/product/:id" element={<DetailProductPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/stock" element={<Stock />} />
+        <Route path="/report" element={<Report />} />
       </Routes>
       <Footer />
     </>

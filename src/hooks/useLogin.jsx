@@ -8,9 +8,11 @@ export const useLogin = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      setUsername(getUsername(token));
-    } else {
-      // window.location.href = "/products";
+      if (token === "admin") {
+        setUsername(token);
+      } else {
+        setUsername(getUsername(token));
+      }
     }
   }, []);
 

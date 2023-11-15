@@ -29,7 +29,7 @@ const Navbar = () => {
               {localStorage.getItem("token") ? "Logout" : "Login"}
             </button>
           </div>
-          <Link to={"/products"}>
+          <Link to={"/"}>
             <a className="flex title-font font-medium items-center text-gray-900 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -46,27 +46,40 @@ const Navbar = () => {
               <span className="ml-2 text-md md:text-xl">Tailblocks</span>
             </a>
           </Link>
-          <div className="hidden md:block">
-            {localStorage.getItem("token") ? (
+
+          {localStorage.getItem("token") === "admin" ? (
+            <div className="flex gap-5">
               <Link to={"/report"}>
-                <p className="font-semibold text-lg">Report</p>
+                <p className="font-semibold text-lg hidden lg:block">Report</p>
               </Link>
-            ) : (
-              ""
-            )}
-          </div>
+              <Link to={"/product-stock"}>
+                <p className="font-semibold text-lg hidden lg:block">Stock</p>
+              </Link>
+            </div>
+          ) : (
+            <p className="font-semibold text-sm md:text-lg text-black">
+              Hallo {username} 👋
+            </p>
+          )}
+
           <div className="lg:hidden" onClick={handleOpen}>
             {isOpen ? <FaX /> : <FaBars />}
           </div>
         </div>
         {isOpen && (
-          <div className="  bg-slate-100 lg:hidden absolute w-full  z-10">
+          <div className=" container mx-auto bg-slate-100 lg:hidden absolute w-full  z-10">
             <div className="px-4 pt-2 pb-3 space-y-1 container mx-auto">
-              {localStorage.getItem("token") ? (
+              {localStorage.getItem("token") === "admin" ? (
                 <div>
-                  <p>Stock</p>
+                  <Link to={"/product-stock"}>
+                    <p className="border text-black border-black w-full bg-white p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold">
+                      Stock
+                    </p>
+                  </Link>
                   <Link to={"/report"}>
-                    <p>Report</p>
+                    <p className="border text-black border-black w-full bg-white p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold">
+                      Report
+                    </p>
                   </Link>
                 </div>
               ) : (

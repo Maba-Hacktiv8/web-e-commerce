@@ -5,12 +5,19 @@ import { getProducts } from "./../services/product.service";
 import { setProducts } from "../redux/actions/productActions";
 import { Link } from "react-router-dom";
 import IconCart from "../components/moleculs/IconCart";
+import { useEffect } from "react";
 
 const ProductStock = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const products = useSelector((state) => state.allProducts.products);
   const [refresh, setRefresh] = useState({});
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== "admin") {
+      window.location.href = "/";
+    }
+  }, []);
 
   const onDecrease = (id) => {
     let datas = [true];

@@ -20,12 +20,22 @@ const ProductsPage = () => {
     getProducts((products) => {
       dispatch(setProducts(products));
     }, []);
-  });
+  }, []);
 
   return (
     <>
       <Hero />
-
+      <div className="container mx-auto flex">
+        <input
+          type="text"
+          placeholder="Enter product name"
+          className="w-1/4 rounded-md mt-5 ml-8 border border-slate-700 px-5 py-2.5 pe-10 shadow-sm sm:text-sm"
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
+        />
+      </div>
       <div className="flex justify-center py-5">
         <div className="w-full flex flex-wrap justify-evenly">
           {productsFiltered.length > 0 &&

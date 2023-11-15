@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "../moleculs/Search";
 import { FaBars, FaX } from "react-icons/fa6";
 import { useLogin } from "../../hooks/useLogin";
 
@@ -72,12 +71,12 @@ const Navbar = () => {
               {localStorage.getItem("token") === "admin" ? (
                 <div>
                   <Link to={"/product-stock"}>
-                    <p className="border text-black border-black w-full bg-white p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold">
+                    <p className="border text-center text-black border-black w-full bg-white p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold">
                       Stock
                     </p>
                   </Link>
                   <Link to={"/report"}>
-                    <p className="border text-black border-black w-full bg-white p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold">
+                    <p className="border text-center mt-1 text-black border-black w-full bg-white p-2 rounded-lg hover:text-white hover:bg-black transition-all duration-300 font-semibold">
                       Report
                     </p>
                   </Link>
@@ -94,9 +93,6 @@ const Navbar = () => {
             </div>
           </div>
         )}
-        <div className="w-full">
-          <Search />
-        </div>
       </div>
     </header>
   );

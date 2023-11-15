@@ -20,6 +20,12 @@ const Report = () => {
     console.log(products);
   }, [order, products]);
 
+  useEffect(() => {
+    if (localStorage.getItem("token") !== "admin") {
+      window.location.href = "/";
+    }
+  }, []);
+
   return (
     <>
       <div className="flex flex-col justify-center items-center pt-4 ">
